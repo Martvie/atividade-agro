@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Google Docs - Senhor dos Anéis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 30px 15px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        /* Cabeçalho */
+        header {
+            background: linear-gradient(135deg, #c9a227 0%, #8b6914 100%);
+            color: #fff;
+            padding: 35px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 28px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 15px;
+            opacity: 0.95;
+        }
+
+        /* Conteúdo */
+        main {
+            padding: 30px;
+        }
+
+        .intro {
+            background: #f0f4ff;
+            border-left: 5px solid #3b5998;
+            padding: 18px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .intro strong {
+            color: #1a1a2e;
+        }
+
+        /* Passos */
+        .passo {
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .passo:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .passo-header {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .numero {
+            background: #3b5998;
+            color: #fff;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .passo-header h2 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 19px;
+            color: #1a1a2e;
+        }
+
+        .passo-body {
+            padding: 20px;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* Listas */
+        .passo-body ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .passo-body ul li {
+            padding: 8px 0 8px 30px;
+            position: relative;
+        }
+
+        .passo-body ul li::before {
+            content: "▸";
+            position: absolute;
+            left: 8px;
+            color: #c9a227;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Destaques de configuração */
+        .config-item {
+            background: #fffbea;
+            border: 1px solid #f0e6c0;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .config-item .rotulo {
+            font-weight: bold;
+            color: #8b6914;
+            min-width: 170px;
+        }
+
+        .config-item .valor {
+            color: #333;
+        }
+
+        .config-item code {
+            background: #eef1f7;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #c0392b;
+        }
+
+        /* Texto de exemplo (transcrição) */
+        .texto-exemplo {
+            background: #fafafa;
+            border: 1px dashed #bbb;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .texto-exemplo .titulo {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 14px;
+            color: #1a1a2e;
+        }
+
+        .texto-exemplo .corpo {
+            font-family: 'Lobster', cursive, sans-serif;
+            font-size: 14px;
+            text-align: justify;
+        }
+
+        .texto-exemplo .negrito {
+            font-weight: bold;
+        }
+
+        .texto-exemplo .italico {
+            font-style: italic;
+        }
+
+        /* Aviso / dica */
+        .dica {
+            background: #e8f5e9;
+            border-left: 5px solid #43a047;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #2e7d32;
+        }
+
+        .dica strong {
+            color: #1b5e20;
+        }
+
+        .atencao {
+            background: #fff3e0;
+            border-left: 5px solid #fb8c00;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #e65100;
+        }
+
+        .atencao strong {
+            color: #bf360c;
+        }
+
+        /* E-mail */
+        .email {
+            display: inline-block;
+            background: #3b5998;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin-top: 6px;
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #888;
+            font-size: 13px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        /* Responsivo */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 22px;
+            }
+
+            .passo-header h2 {
+                font-size: 16px;
+            }
+
+            .config-item .rotulo {
+                min-width: 100%;
+            }
+
+            .numero {
+                width: 32px;
+                height: 32px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Cabeçalho -->
+        <header>
+            <h1>📝 Atividade Google Docs</h1>
+            <p>Senhor dos Anéis — Formatação de Texto</p>
+        </header>
+
+        <main>
+            <!-- Introdução -->
+            <div class="intro">
+                <strong>Objetivo:</strong> Criar um documento no Google Docs, transcrever o texto abaixo e aplicar as
+                configurações de formatação solicitadas. Ao final, compartilhe o documento com o professor.
+            </div>
+
+            <!-- PASSO 1 -->
+            <div class="passo">
+                <div class="passo-header">
+                    <div class="numero">1</div>
+                    <h2>Abra o Google Docs</h2>
+                </div>
+                <div class="passo-body">
+                    <ul>
+                        <li>Acesse <strong>docs.google.com</strong> com sua conta Google.</li>
+                        <li>Clique em <strong>“Documento em branco”</strong> para criar um novo documento.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PASSO 2 -->
+            <div class="passo">
+                <div class="passo-header">
+                    <div class="numero">2</div>
+                    <h2>Transcreva o texto abaixo</h2>
+                </div>
+                <div class="passo-body">
+                    <p>Copie ou digite o texto exatamente como está no exemplo:</p>
+
+                    <div class="texto-exemplo">
+                        <div class="titulo">Assim disse Galadriel</div>
+                        <div class="corpo">
+                            O mundo mudou, posso senti-lo na água, posso senti-lo na terra, posso senti-lo no ar, muito
+                            do que havia está perdido, pois nenhum dos que se lembra disso está vivo agora; tudo começou
+                            com a <span class="negrito">forja dos Grandes Anéis</span>, mas todos eles foram enganados,
+                            pois outro anel foi feito na terra de Mordor, nas chamas da Montanha da Perdição, onde o
+                            Senhor das Trevas, Sauron, forjou secretamente um Anel Mestre para a todos controlar, Um
+                            Anel para encontrá-los, Um Anel para a todos trazer e na escuridão aprisioná-los.
+                        </div>
+                    </div>
+
+                    <div class="dica">
+                        <strong>💡 Dica:</strong> Não se preocupe com a formatação agora — apenas transcreva o texto. A
+                        formatação será feita no próximo passo.
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASSO 3 -->
+            <div class="passo">
+                <div class="passo-header">
+                    <div class="numero">3</div>
+                    <h2>Aplique as configurações de formatação</h2>
+                </div>
+                <div class="passo-body">
+                    <p style="margin-bottom: 15px;">Siga as instruções abaixo com atenção:</p>
+
+                    <h3 style="font-family: Arial, sans-serif; font-size: 16px; color: #3b5998; margin: 18px 0 10px;">🔤
+                        Texto</h3>
+
+                    <div class="config-item">
+                        <span class="rotulo">Fonte do texto:</span>
+                        <span class="valor"><code>Lobster</code></span>
+                    </div>
+                    <div class="config-item">
+                        <span class="rotulo">Fonte do título:</span>
+                        <span class="valor"><code>Arial</code></span>
+                    </div>
+                    <div class="config-item">
+                        <span class="rotulo">Tamanho do texto:</span>
+                        <span class="valor"><code>14</code></span>
+                    </div>
+                    <div class="config-item">
+                        <span class="rotulo">Tamanho do título:</span>
+                        <span class="valor"><code>20</code></span>
+                    </div>
+                    <div class="config-item">
+                        <span class="rotulo">Trecho em negrito:</span>
+                        <span class="valor">“<strong>forja dos Grandes Anéis</strong>”</span>
+                    </div>
+                    <div class="config-item">
+                        <span class="rotulo">Trecho em itálico:</span>
+                        <span class="valor">“<em>um anel para a todos trazer e na escuridão aprisioná-los</em>”</span>
+                    </div>
+                    <div class="config-item">
+                        <span class="rotulo">Alinhamento do texto:</span>
+                        <span class="valor">Justificado</span>
+                    </div>
+                    <div class="config-item">
+                        <span class="rotulo">Alinhamento do título:</span>
+                        <span class="valor">Centralizado</span>
+                    </div>
+
+                    <h3 style="font-family: Arial, sans-serif; font-size: 16px; color: #3b5998; margin: 25px 0 10px;">📄
+                        Página</h3>
+
+                    <div class="config-item">
+                        <span class="rotulo">Margem superior:</span>
+                        <span class="valor"><code>4 cm</code></span>
+                    </div>
+                    <div class="config-item">
+                        <span class="rotulo">Margem inferior:</span>
+                        <span class="valor"><code>4 cm</code></span>
+                    </div>
+                    <div class="config-item">
+                        <span class="rotulo">Margem direita:</span>
+                        <span class="valor"><code>5 cm</code></span>
+                    </div>
+                    <div class="config-item">
+                        <span class="rotulo">Margem esquerda:</span>
+                        <span class="valor"><code>5 cm</code></span>
+                    </div>
+
+                    <div class="atencao">
+                        <strong>⚠️ Atenção:</strong> No Google Docs, as margens são configuradas em <strong>Arquivo →
+                            Configuração da página</strong>. Certifique-se de que a unidade esteja em
+                        <strong>centímetros</strong>.
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASSO 4 -->
+            <div class="passo">
+                <div class="passo-header">
+                    <div class="numero">4</div>
+                    <h2>Renomeie o arquivo</h2>
+                </div>
+                <div class="passo-body">
+                    <p>Clique no nome atual do documento (canto superior esquerdo) e altere para:</p>
+                    <div class="config-item" style="margin-top: 12px;">
+                        <span class="rotulo">Nome do arquivo:</span>
+                        <span class="valor"><code>Atividade docs - Nome1, Nome2 e Nome3</code></span>
+                    </div>
+                    <p style="margin-top: 12px; font-size: 14px; color: #666;">
+                        <strong>Exemplo:</strong> Atividade docs - Eduardo, Gustavo e Fernando
+                    </p>
+                </div>
+            </div>
+
+            <!-- PASSO 5 -->
+            <div class="passo">
+                <div class="passo-header">
+                    <div class="numero">5</div>
+                    <h2>Compartilhe com o professor</h2>
+                </div>
+                <div class="passo-body">
+                    <ul>
+                        <li>No canto superior direito, clique no botão <strong>“Compartilhar”</strong>.</li>
+                        <li>No campo de e-mail, digite:</li>
+                    </ul>
+                    <div style="text-align: center; margin: 14px 0;">
+                        <span class="email">marviedias@gmail.com</span>
+                    </div>
+                    <ul>
+                        <li>Verifique se a permissão está como <strong>“Editor”</strong> ou conforme orientação do
+                            professor.</li>
+                        <li>Clique em <strong>“Concluído”</strong>.</li>
+                    </ul>
+
+                    <div class="dica">
+                        <strong>✅ Pronto!</strong> Sua atividade foi concluída e compartilhada. Aguarde as instruções do
+                        professor.
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Rodapé -->
+        <footer>
+            Atividade prática — Google Docs &bull; Formatação de texto
+        </footer>
+    </div>
+
+</body>
+
+</html>
